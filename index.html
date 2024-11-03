@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> the scratchpost </title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html"> <img id="logo" src="logo.png"> </a>
+    </div>
+    <div id="article_container" class="horizontal">
+    </div>
+    <div class="bot_con">
+      <div class="control_panel">
+        <button onclick="vertical_articles()">Vertical View</button>
+        <button onclick="horizontal_articles()">Horizontal View</button>
+        <div class="dropdown">
+          <button class="dropdown_button">Article Order</button>
+          <div class="dropdown_content">
+            <div class="sortable_list">
+              <ul id="sortable">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
