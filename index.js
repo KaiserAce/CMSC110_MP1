@@ -82,12 +82,20 @@ function default_articles() {
 function vertical_articles(){
   const div = document.getElementById("article_container");
   div.classList.remove("horizontal");
+  div.classList.remove("tiled");
   div.classList.add("vertical");
 }
 function horizontal_articles(){
   const div = document.getElementById("article_container");
   div.classList.remove("vertical");
+  div.classList.remove("tiled");
   div.classList.add("horizontal");
+}
+function tiled_articles() {
+  const div = document.getElementById("article_container");
+  div.classList.remove("vertical");
+  div.classList.remove("horizontal");
+  div.classList.add("tiled");
 }
 
 function rearrange_articles(){
