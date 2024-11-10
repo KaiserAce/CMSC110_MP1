@@ -66,9 +66,10 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px
-  
-
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .horizontal_article {
@@ -77,11 +78,19 @@
   float: none;
   height: 90%;
   display:inline-block;
+  overflow: hidden;
+  
 }
 
 .text_container {
   max-width: 400px;
   white-space: wrap;
+}
+
+.title_container {
+  max-width: 400px;
+  white-space: wrap;
+  text-wrap: wrap;
 }
 
 .sortable-list {

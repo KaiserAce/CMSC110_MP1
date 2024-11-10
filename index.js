@@ -4,7 +4,7 @@ var articles = [
     Author: "Bien Casambre",
     Date: "September 29, 2023",
     Title: "UPB Admin remind students: Avoid petting campus cats (1)",
-    Summary: "Over two dozen reports of cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September.",
+    Summary: "Over two dozen rebhjgaebvkjabvhportsbhv ofbvhkjaebvjhkearvbja vbvhjaerkhja cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September.",
     Link: "article.html",
     Image: "pet_me_not.png"
   },
@@ -47,6 +47,9 @@ function default_articles() {
     const text_container = document.createElement("div");
     text_container.classList.add("text_container");
 
+    const title_container = document.createElement("div");
+    title_container.classList.add("title_container");
+
     const author = document.createElement("p")
     const date = document.createElement("p")
     const title = document.createElement("p");
@@ -63,11 +66,12 @@ function default_articles() {
     image.width = 100;
 
     text_container.appendChild(summary);
+    title_container.appendChild(title)
 
     container.appendChild(image);
     container.appendChild(author);
     container.appendChild(date);
-    container.appendChild(title);
+    container.appendChild(title_container);
     container.appendChild(text_container);
     div.appendChild(container);
 
@@ -119,6 +123,9 @@ function rearrange_articles(){
     const text_container = document.createElement("div");
     text_container.classList.add("text_container");
 
+    const title_container = document.createElement("div");
+    title_container.classList.add("title_container");
+
     const author = document.createElement("p")
     const date = document.createElement("p")
     const title = document.createElement("p");
@@ -135,11 +142,12 @@ function rearrange_articles(){
     image.width = 100;
 
     text_container.appendChild(summary);
+    title_container.appendChild(title)
 
     container.appendChild(image);
     container.appendChild(author);
     container.appendChild(date);
-    container.appendChild(title);
+    container.appendChild(title_container);
     container.appendChild(text_container);
     div.appendChild(container);
   }
