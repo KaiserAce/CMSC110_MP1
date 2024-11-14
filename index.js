@@ -1,4 +1,4 @@
-var articles = [
+var articles = [ /*container for article summaries in homepage*/
   {
     Rank: 1,
     Author: "Bien Casambre",
@@ -23,7 +23,7 @@ var articles = [
     Date: "September 29, 2023",
     Title: "UPB Admin remind students: 'Avoid petting campus cats'",
     Summary: "Over two dozen reports of cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September...",
-    Link: "article.html",
+    Link: "rj.html",
     Image: "pet_me_not.png"
   },
   {
@@ -55,7 +55,7 @@ var articles = [
   },
 ];
 
-function default_articles() {
+function default_articles() { /*layout of homepage*/
   const div = document.getElementById("article_container");
   const list = document.getElementById("sortable");
   for (const article of articles) {
@@ -105,23 +105,37 @@ function default_articles() {
   }
 };
 
-function vertical_articles(){
+function vertical_articles(){ /*vertical scroll layout*/
   const div = document.getElementById("article_container");
   div.classList.remove("horizontal");
   div.classList.remove("tiled");
   div.classList.add("vertical");
+  let spread = document.querySelectorAll('.horizontal_article'); /*changes width of each displayed article to 500px*/
+  spread.forEach(element => {
+    element.style.width = '500px'
+  })
+  
 }
-function horizontal_articles(){
+function horizontal_articles(){ /*horizontal feed layout*/
   const div = document.getElementById("article_container");
   div.classList.remove("vertical");
   div.classList.remove("tiled");
   div.classList.add("horizontal");
+  let spread = document.querySelectorAll('.horizontal_article'); /*changes width of each displayed article back to 220px*/
+  spread.forEach(element => {
+    element.style.width = '220px'
+  })
+  
 }
-function tiled_articles() {
+function tiled_articles() { /*columnal tile layout*/
   const div = document.getElementById("article_container");
   div.classList.remove("vertical");
   div.classList.remove("horizontal");
   div.classList.add("tiled");
+  let spread = document.querySelectorAll('.horizontal_article'); /*changes width of each displayed article back to 220px*/
+  spread.forEach(element => {
+    element.style.width = '220px'
+  })
 }
 
 function rearrange_articles(){
@@ -180,7 +194,7 @@ function rearrange_articles(){
   }
 }
 
-const sortableList =
+const sortableList = /*for rearranging articles*/
     document.getElementById("sortable");
 let draggedItem = null;
  
@@ -283,10 +297,9 @@ function fluffmode(){ /*sets fluffy mode theme*/
   document.body.style.setProperty("--tertiary-dark", "#5538ac");
   logo.src = "invertedlogo.png";
   document.body.style.backgroundImage = "url('fluffbg.png')";
-  document.body.style.setProperty("color", "#0c0c0c");
+  document.body.style.setProperty("color", "white");
+  
 }
 
 default_articles();
 rearrange_articles();
-
-
