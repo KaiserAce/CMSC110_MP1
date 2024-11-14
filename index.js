@@ -147,7 +147,6 @@ function rearrange_articles(){
     temp.push(article);
   }
   articles = temp;
-  console.log(articles);
 
   const div = document.getElementById("article_container");
   div.innerHTML = '';
@@ -194,81 +193,83 @@ function rearrange_articles(){
   }
 }
 
-const sortableList = /*for rearranging articles*/
-    document.getElementById("sortable");
-let draggedItem = null;
- 
-sortableList.addEventListener(
-    "dragstart",
-    (e) => {
-        draggedItem = e.target;
-        setTimeout(() => {
-            e.target.style.display =
-                "none";
-        }, 0);
-});
- 
-sortableList.addEventListener(
-    "dragend",
-    (e) => {
-        setTimeout(() => {
-            e.target.style.display = "";
-            draggedItem = null;
-        }, 0);
-    rearrange_articles();
-});
- 
-sortableList.addEventListener(
-    "dragover",
-    (e) => {
-        e.preventDefault();
-        const afterElement =
-            getDragAfterElement(
-                sortableList,
-                e.clientY);
-        const currentElement =
-            document.querySelector(
-                ".dragging");
-        if (afterElement == null) {
-            sortableList.appendChild(
-                draggedItem
-            );} 
-        else {
-            sortableList.insertBefore(
-                draggedItem,
-                afterElement
-            );}
-    });
- 
-const getDragAfterElement = (
-    container, y
-) => {
-    const draggableElements = [
-        ...container.querySelectorAll(
-            "li:not(.dragging)"
-        ),];
- 
-    return draggableElements.reduce(
-        (closest, child) => {
-            const box =
-                child.getBoundingClientRect();
-            const offset =
-                y - box.top - box.height / 2;
-            if (
-                offset < 0 &&
-                offset > closest.offset) {
-                return {
-                    offset: offset,
-                    element: child,
-                };} 
-            else {
-                return closest;
-            }},
-        {
-            offset: Number.NEGATIVE_INFINITY,
-        }
-    ).element;
-};
+function list() {
+  const sortableList = /*for rearranging articles*/
+      document.getElementById("sortable");
+  let draggedItem = null;
+   
+  sortableList.addEventListener(
+      "dragstart",
+      (e) => {
+          draggedItem = e.target;
+          setTimeout(() => {
+              e.target.style.display =
+                  "none";
+          }, 0);
+  });
+   
+  sortableList.addEventListener(
+      "dragend",
+      (e) => {
+          setTimeout(() => {
+              e.target.style.display = "";
+              draggedItem = null;
+          }, 0);
+      rearrange_articles();
+  });
+   
+  sortableList.addEventListener(
+      "dragover",
+      (e) => {
+          e.preventDefault();
+          const afterElement =
+              getDragAfterElement(
+                  sortableList,
+                  e.clientY);
+          const currentElement =
+              document.querySelector(
+                  ".dragging");
+          if (afterElement == null) {
+              sortableList.appendChild(
+                  draggedItem
+              );} 
+          else {
+              sortableList.insertBefore(
+                  draggedItem,
+                  afterElement
+              );}
+      });
+   
+  const getDragAfterElement = (
+      container, y
+  ) => {
+      const draggableElements = [
+          ...container.querySelectorAll(
+              "li:not(.dragging)"
+          ),];
+   
+      return draggableElements.reduce(
+          (closest, child) => {
+              const box =
+                  child.getBoundingClientRect();
+              const offset =
+                  y - box.top - box.height / 2;
+              if (
+                  offset < 0 &&
+                  offset > closest.offset) {
+                  return {
+                      offset: offset,
+                      element: child,
+                  };} 
+              else {
+                  return closest;
+              }},
+          {
+              offset: Number.NEGATIVE_INFINITY,
+          }
+      ).element;
+  };
+}
 
 function lightmode(){ /*sets light mode theme*/
   document.body.style.setProperty("--primary-color", "white");
@@ -278,6 +279,7 @@ function lightmode(){ /*sets light mode theme*/
   logo.src = "logo.png";
   document.body.style.setProperty("background", "white");
   document.body.style.setProperty("color", "#0c0c0c");
+  sessionStorage.setItem("theme", "light")
 }
 
 function darkmode(){ /*sets dark mode theme*/
@@ -288,6 +290,7 @@ function darkmode(){ /*sets dark mode theme*/
   logo.src = "invertedlogo.png";
   document.body.style.setProperty("background", "#101212");
   document.body.style.setProperty("color", "white");
+  sessionStorage.setItem("theme", "dark")
 }
 
 function fluffmode(){ /*sets fluffy mode theme*/
@@ -298,8 +301,28 @@ function fluffmode(){ /*sets fluffy mode theme*/
   logo.src = "invertedlogo.png";
   document.body.style.backgroundImage = "url('fluffbg.png')";
   document.body.style.setProperty("color", "white");
-  
+  sessionStorage.setItem("theme", "fluff")
 }
 
-default_articles();
-rearrange_articles();
+window.addEventListener("DOMContentLoaded", () => {
+  let theme = sessionStorage.getItem("theme");
+  if (theme === "dark") {
+    console.log(theme)
+    darkmode()
+  } else if (theme === "light") {
+    console.log(theme)
+    lightmode()
+  } else if (theme === "fluff") {
+    console.log(theme)
+    fluffmode()
+  }
+});
+
+function mainpage_onload(){
+  default_articles();
+  rearrange_articles();
+  persistent_theme();
+  list();
+}
+
+
