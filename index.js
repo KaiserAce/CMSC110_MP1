@@ -2,38 +2,56 @@ var articles = [
   {
     Rank: 1,
     Author: "Bien Casambre",
-    Date: "September 29, 2023",
-    Title: "UPB Admin remind students: Avoid petting campus cats (1)",
-    Summary: "Over two dozen rebhjgaebvkjabvhportsbhv ofbvhkjaebvjhkearvbja vbvhjaerkhja cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September.",
-    Link: "article.html",
-    Image: "pet_me_not.png"
+    Date: "April 24, 2023",
+    Title: "UPB cats receive donated supplies",
+    Summary: "A bundle of cat collars, cat food, cat litter, and cat medicine were sent to University of the Philippines Baguio by Pilly's Pet Supplies last April 23rd...",
+    Link: "donations.html",
+    Image: "donations.png"
   },
   {
     Rank: 2,
     Author: "Bien Casambre",
-    Date: "September 29, 2023",
-    Title: "UPB Admin remind students: Avoid petting campus cats (2)",
-    Summary: "Over two dozen reports of cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September.",
-    Link: "article.html",
-    Image: "pet_me_not.png"
+    Date: "September 17, 2023",
+    Title: "UPB cats beneficiaries of annual vax program, anti-rabies shots updated",
+    Summary: "Last September 16th, the Cats of UPB volunteer community facilitated a schoolwide vaccination program...",
+    Link: "vax.html",
+    Image: "kuya_riki_cat.png"
   },
   {
     Rank: 3,
     Author: "Bien Casambre",
     Date: "September 29, 2023",
-    Title: "UPB Admin remind students: Avoid petting campus cats (3)",
-    Summary: "Over two dozen reports of cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September.",
+    Title: "UPB Admin remind students: 'Avoid petting campus cats'",
+    Summary: "Over two dozen reports of cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September...",
     Link: "article.html",
     Image: "pet_me_not.png"
   },
   {
     Rank: 4,
     Author: "Bien Casambre",
-    Date: "September 29, 2023",
-    Title: "UPB Admin remind students: Avoid petting campus cats (4)",
-    Summary: "Over two dozen reports of cat-related injuries were filed by students at the University of the Philippines Baguio Health Service Office (UPB-HSO) over the month of September.",
-    Link: "article.html",
-    Image: "pet_me_not.png"
+    Date: "December 18, 2023",
+    Title: "Welcome Gwen!",
+    Summary: "The family of UPB Cats welcomed Gwen, a white and orange tabby PusPin to the campus last December, 2023...",
+    Link: "gwen.html",
+    Image: "gwen.png"
+  },
+  {
+    Rank: 5,
+    Author: "Bien Casambre",
+    Date: "April 25, 2024",
+    Title: "Congreowtulations, graduates!",
+    Summary: "The Cats of UPB community extends its warmest congratulations to the graduates of Batch 2024...",
+    Link: "grad.html",
+    Image: "grad.png"
+  },
+  {
+    Rank: 6,
+    Author: "Bien Casambre",
+    Date: "November 2, 2024",
+    Title: "Fly high, Uno",
+    Summary: "The Cats of UPB community publicly announced last October 23rd the passing of Uno, the senior white and grey tabby Puspin cat...",
+    Link: "uno.html",
+    Image: "uno.png"
   },
 ];
 
@@ -50,26 +68,30 @@ function default_articles() {
     const title_container = document.createElement("div");
     title_container.classList.add("title_container");
 
+    const title = document.createElement("p");
     const author = document.createElement("p")
     const date = document.createElement("p")
-    const title = document.createElement("p");
     const summary = document.createElement("p")
     const image = document.createElement('img');
 
+    title.appendChild(document.createTextNode(article.Title));
     author.appendChild(document.createTextNode(article.Author));
     date.appendChild(document.createTextNode(article.Date));
-    title.appendChild(document.createTextNode(article.Title));
     summary.appendChild(document.createTextNode(article.Summary));
 
-
     image.src = article.Image;
-    image.width = 100;
+    image.width = 175;
+
+    const viewLink = document.createElement("a");
+        viewLink.href = article.Link; // Set the link to the article's URL
+        viewLink.textContent = "View Full Article"; // Link text
+        viewLink.classList.add("view-full-article");
 
     text_container.appendChild(summary);
+    text_container.appendChild(viewLink);
     title_container.appendChild(title)
 
     container.appendChild(image);
-    container.appendChild(author);
     container.appendChild(date);
     container.appendChild(title_container);
     container.appendChild(text_container);
@@ -126,28 +148,33 @@ function rearrange_articles(){
     const title_container = document.createElement("div");
     title_container.classList.add("title_container");
 
+    const title = document.createElement("p");
     const author = document.createElement("p")
     const date = document.createElement("p")
-    const title = document.createElement("p");
     const summary = document.createElement("p")
     const image = document.createElement('img');
 
+    title.appendChild(document.createTextNode(article.Title));
     author.appendChild(document.createTextNode(article.Author));
     date.appendChild(document.createTextNode(article.Date));
-    title.appendChild(document.createTextNode(article.Title));
     summary.appendChild(document.createTextNode(article.Summary));
 
 
     image.src = article.Image;
-    image.width = 100;
+    image.width = 175;
+
+    const viewLink = document.createElement("a");
+        viewLink.href = article.Link; // Set the link to the article's URL
+        viewLink.textContent = "View Full Article"; // Link text
+        viewLink.classList.add("view-full-article");
 
     text_container.appendChild(summary);
+    text_container.appendChild(viewLink);
     title_container.appendChild(title)
 
     container.appendChild(image);
-    container.appendChild(author);
-    container.appendChild(date);
     container.appendChild(title_container);
+    container.appendChild(date);
     container.appendChild(text_container);
     div.appendChild(container);
   }
@@ -228,6 +255,36 @@ const getDragAfterElement = (
         }
     ).element;
 };
+
+function lightmode(){ /*sets light mode theme*/
+  document.body.style.setProperty("--primary-color", "white");
+  document.body.style.setProperty("--secondary-color", "#0c0c0c");
+  document.body.style.setProperty("--tertiary-color", "rgb(255, 255, 126)");
+  document.body.style.setProperty("--tertiary-dark", "#ffd900");
+  logo.src = "logo.png";
+  document.body.style.setProperty("background", "white");
+  document.body.style.setProperty("color", "#0c0c0c");
+}
+
+function darkmode(){ /*sets dark mode theme*/
+  document.body.style.setProperty("--primary-color", "#0c0c0c");
+  document.body.style.setProperty("--secondary-color", "white");
+  document.body.style.setProperty("--tertiary-color", "#6441a5");
+  document.body.style.setProperty("--tertiary-dark", "#5538ac");
+  logo.src = "invertedlogo.png";
+  document.body.style.setProperty("background", "#101212");
+  document.body.style.setProperty("color", "white");
+}
+
+function fluffmode(){ /*sets fluffy mode theme*/
+  document.body.style.setProperty("--primary-color", "black");
+  document.body.style.setProperty("--secondary-color", "white");
+  document.body.style.setProperty("--tertiary-color", "#6441a5");
+  document.body.style.setProperty("--tertiary-dark", "#5538ac");
+  logo.src = "invertedlogo.png";
+  document.body.style.backgroundImage = "url('fluffbg.png')";
+  document.body.style.setProperty("color", "#0c0c0c");
+}
 
 default_articles();
 rearrange_articles();

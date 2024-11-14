@@ -1,9 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); /*import font family Inter from Google Fonts*/
+
+:root { /*assigns primary and secondary colors as variables for more efficient theme switching*/ 
+  --primary-color: white;
+  --secondary-color: #0c0c0c;
+  --tertiary-color: rgb(255, 255, 126);
+  --tertiary-dark: #ffd900;
+}
+
+body {
+  font-family: 'Inter', sans-serif; 
+}
+
+.view-full-article { /*style of view full article buttons*/
+  font-weight: 600;
+  background: var(--secondary-color);
+  padding: 7px; /*increases size of button*/
+  color: var(--primary-color); 
+  text-decoration: none; /*removes underline from link*/
+  border-radius: 10px; /*makes borders of link round*/
+}
+
 .navbar {
+  z-index: 9999; /*ensure that navbar stays in front of all content*/
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: var(--primary-color);
   height: 50px;
   display: flex;
   justify-content: center;
@@ -11,18 +34,29 @@
   box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 550;
+  color:var(--primary-color);
+  background:none;
+  border:none;
+  border-radius: 5px;
+  margin-left: 8px;
+}
+
 .control_panel {
   position: fixed;
-  width: 30%;
+  width: 50%;
   bottom: 0;
-  background-color: white;
+  background-color: var(--secondary-color);
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: none;
   border-radius: 5px 5px 0px 0px;
 }
+
 .bot_con {
   position:fixed;
   width: 100%;
@@ -33,12 +67,14 @@
 }
 
 #logo {
-  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  height: 40px;
 }
 
 .horizontal {
-  width: 500px;
-  height: 500px;
+  width: 900px;
+  height: 650px;
   white-space: nowrap;
   position: relative;
   overflow-x: scroll;
@@ -51,7 +87,7 @@
 
 .vertical {
   width: 500px;
-  height: 500px;
+  height: 600px;
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -63,7 +99,7 @@
 
 .tiled {
   max-width: 800px;
-  position: relative;
+  position: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -88,6 +124,8 @@
 }
 
 .title_container {
+  font-size:larger; /*make titles larger*/
+  font-weight: 700;
   max-width: 400px;
   white-space: wrap;
   text-wrap: wrap;
@@ -104,15 +142,15 @@ ul {
 }
  
 li {
-    background-color: #f0f0f0;
+    background-color: var(--primary-color);
     padding: 10px;
     margin: 5px;
     cursor: grab;
 }
 /* Dropdown Button */
 .dropdown_button {
-  background-color: #04AA6D;
-  color: white;
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -129,7 +167,7 @@ li {
   display: none;
   bottom: 100%;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: var(--primary-color);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 9999;
@@ -139,4 +177,4 @@ li {
 .dropdown:hover .dropdown_content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropdown_button {background-color: #3e8e41;}
+.dropdown:hover .dropdown_button {background-color: var(--tertiary-dark);}
