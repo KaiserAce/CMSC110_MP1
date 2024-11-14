@@ -114,7 +114,7 @@ function vertical_articles(){ /*vertical scroll layout*/
   spread.forEach(element => {
     element.style.width = '500px'
   })
-  
+  sessionStorage.setItem("arrangement", "vertical")
 }
 function horizontal_articles(){ /*horizontal feed layout*/
   const div = document.getElementById("article_container");
@@ -125,7 +125,7 @@ function horizontal_articles(){ /*horizontal feed layout*/
   spread.forEach(element => {
     element.style.width = '220px'
   })
-  
+  sessionStorage.setItem("arrangement", "horizontal")
 }
 function tiled_articles() { /*columnal tile layout*/
   const div = document.getElementById("article_container");
@@ -136,6 +136,7 @@ function tiled_articles() { /*columnal tile layout*/
   spread.forEach(element => {
     element.style.width = '220px'
   })
+  sessionStorage.setItem("arrangement", "tiled")
 }
 
 function rearrange_articles(){
@@ -308,13 +309,10 @@ function fluffmode(){ /*sets fluffy mode theme*/
 window.addEventListener("DOMContentLoaded", () => {
   let theme = sessionStorage.getItem("theme");
   if (theme === "dark") {
-    console.log(theme)
     darkmode()
   } else if (theme === "light") {
-    console.log(theme)
     lightmode()
   } else if (theme === "fluff") {
-    console.log(theme)
     fluffmode()
   }
 });
@@ -323,6 +321,15 @@ function mainpage_onload(){
   default_articles();
   rearrange_articles();
   list();
+
+  let theme = sessionStorage.getItem("arrangement");
+  if (theme === "horizontal") {
+    horizontal_articles()
+  } else if (theme === "vertical") {
+    vertical_articles()
+  } else if (theme === "tiled") {
+    tiled_articles()
+  }
 }
 
 
