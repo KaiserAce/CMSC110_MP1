@@ -146,6 +146,7 @@ function rearrange_articles(){
     .find(item => item.Title === list.textContent);
     temp.push(article);
   }
+
   articles = temp;
 
   const div = document.getElementById("article_container");
@@ -321,7 +322,6 @@ window.addEventListener("DOMContentLoaded", () => {
 function mainpage_onload(){
   default_articles();
   rearrange_articles();
-  persistent_theme();
   list();
 }
 
